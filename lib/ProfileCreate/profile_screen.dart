@@ -11,11 +11,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final ScrollController _scrollController = ScrollController();
   late int _middleIndex = -1;
   List<String> ages = ["", "", "1", "2", "3", "4", "5", "6", "", ""];
+  String sexSelect = "Boy";
 
   @override
   void initState() {
     _scrollController.addListener(setColor);
     super.initState();
+  }
+
+  void sexChange(String sex) {
+    setState(() {
+      sexSelect = sex;
+    });
   }
 
   void setColor() {
@@ -50,7 +57,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Column(
               children: [
                 SizedBox(
-                  height: height * 0.15,
+                  height: height * 0.18,
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(10, 4, 10, 4),
                     child: Column(
@@ -73,51 +80,100 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Container(
-                              height: height * 0.07,
-                              width: width * 0.35,
-                              decoration: BoxDecoration(
-                                  color: const Color.fromRGBO(28, 31, 218, 1),
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  SizedBox(
-                                    child: Image.asset("assets/Images/boy.png"),
+                            Stack(clipBehavior: Clip.none, children: [
+                              InkWell(
+                                onTap: () {
+                                  sexChange("Boy");
+                                },
+                                child: Container(
+                                  height: sexSelect == "Boy"
+                                      ? height * 0.1
+                                      : height * 0.07,
+                                  width: width * 0.35,
+                                  decoration: BoxDecoration(
+                                      color:
+                                          const Color.fromRGBO(28, 31, 218, 1),
+                                      borderRadius: sexSelect == "Boy"
+                                          ? BorderRadius.circular(28)
+                                          : BorderRadius.circular(20)),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      SizedBox(
+                                        child: Image.asset(
+                                            "assets/Images/boy.png"),
+                                      ),
+                                      const Text(
+                                        "Boy",
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold),
+                                      )
+                                    ],
                                   ),
-                                  const Text(
-                                    "Boy",
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
+                                ),
                               ),
-                            ),
-                            Container(
-                              height: height * 0.07,
-                              width: width * 0.35,
-                              decoration: BoxDecoration(
-                                  color: const Color.fromRGBO(221, 35, 59, 1),
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  SizedBox(
-                                    child:
-                                        Image.asset("assets/Images/girl.png"),
+                              Positioned(
+                                  top: -12,
+                                  right: -12,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.transparent,
+                                    child: sexSelect == "Boy"
+                                        ? const Icon(
+                                            Icons.verified,
+                                            color: Colors.green,
+                                          )
+                                        : null,
+                                  ))
+                            ]),
+                            Stack(clipBehavior: Clip.none, children: [
+                              InkWell(
+                                onTap: () {
+                                  sexChange("Girl");
+                                },
+                                child: Container(
+                                  height: sexSelect == "Girl"
+                                      ? height * 0.1
+                                      : height * 0.07,
+                                  width: width * 0.35,
+                                  decoration: BoxDecoration(
+                                      color:
+                                          const Color.fromRGBO(221, 35, 59, 1),
+                                      borderRadius: sexSelect == "Girl"
+                                          ? BorderRadius.circular(28)
+                                          : BorderRadius.circular(20)),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      SizedBox(
+                                        child: Image.asset(
+                                            "assets/Images/girl.png"),
+                                      ),
+                                      const Text(
+                                        "Girl",
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold),
+                                      )
+                                    ],
                                   ),
-                                  const Text(
-                                    "Girl",
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
+                                ),
                               ),
-                            )
+                              Positioned(
+                                  top: -12,
+                                  right: -12,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.transparent,
+                                    child: sexSelect == "Girl"
+                                        ? const Icon(
+                                            Icons.verified,
+                                            color: Colors.green,
+                                          )
+                                        : null,
+                                  ))
+                            ])
                           ],
                         )
                       ],
@@ -125,7 +181,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: height * 0.60,
+                  height: height * 0.57,
                   child: Image.asset("assets/Images/pbackground.jpg"),
                 ),
                 SizedBox(
@@ -166,7 +222,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                       ElevatedButton(
-                          onPressed: () {}, child: const Text("Continue"))
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  const Color.fromRGBO(210, 36, 36, 1),
+                              minimumSize: const Size(250, 50)),
+                          onPressed: () {},
+                          child: const Text(
+                            "Save",
+                            style: TextStyle(fontSize: 24, color: Colors.white),
+                          ))
                     ],
                   ),
                 ),
