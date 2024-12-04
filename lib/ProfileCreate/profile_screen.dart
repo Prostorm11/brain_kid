@@ -86,10 +86,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                 ),
+
+
+
                 Container(
                   color: Colors.red,
                   height: height * 0.55,
                 ),
+
+
+                
                 Container(
                   color: Colors.orange,
                   height: height * 0.2,
