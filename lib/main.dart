@@ -1,4 +1,5 @@
-import 'package:brain_kid/ProfileCreate/profile_screen.dart';
+//import 'package:brain_kid/ProfileCreate/profile_screen.dart';
+import 'package:brain_kid/navigation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const ProfileScreen()
+      home: const NavigateScreens()
     );
   }
 }
