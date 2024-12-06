@@ -63,19 +63,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        const Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Icon(Icons.arrow_back),
-                            Text(
+                        const SizedBox(
+                          child: Center(
+                            child: Text(
                               "Create Profile",
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(
-                              width: 50,
-                            )
-                          ],
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 50,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -85,6 +83,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 onTap: () {
                                   sexChange("Boy");
                                 },
+                                borderRadius: sexSelect == "Boy"
+                                    ? BorderRadius.circular(28)
+                                    : BorderRadius.circular(20),
                                 child: Container(
                                   height: sexSelect == "Boy"
                                       ? height * 0.1
@@ -132,6 +133,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 onTap: () {
                                   sexChange("Girl");
                                 },
+                                borderRadius: sexSelect == "Girl"
+                                    ? BorderRadius.circular(28)
+                                    : BorderRadius.circular(20),
                                 child: Container(
                                   height: sexSelect == "Girl"
                                       ? height * 0.1
