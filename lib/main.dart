@@ -1,6 +1,6 @@
-//import 'package:brain_kid/ProfileCreate/profile_screen.dart';
+import 'package:brain_kid/ProfileCreate/profile_screen.dart';
 import 'package:brain_kid/Screens/mathsscreen.dart';
-//import 'package:brain_kid/navigation.dart';
+import 'package:brain_kid/navigation.dart';
 import 'package:flutter/material.dart';
 
 void main() {

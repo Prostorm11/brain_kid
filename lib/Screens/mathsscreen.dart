@@ -11,7 +11,6 @@ class Mathsscreen extends StatefulWidget {
 class _MathsscreenState extends State<Mathsscreen> {
   @override
   Widget build(BuildContext context) {
-    //final double width = MediaQuery.of(context).size.width;
     const List<String> images = [
       "add_Image.png",
       "subtract_Image.png",
@@ -28,150 +27,215 @@ class _MathsscreenState extends State<Mathsscreen> {
       child: Scaffold(
         body: Container(
           decoration: const BoxDecoration(
-            color: Color.fromARGB(255, 255, 233, 247)
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 240, 255, 240),
+                Color.fromARGB(255, 255, 223, 240)
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
           ),
           width: double.infinity,
           height: double.infinity,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(7, 20, 7, 10),
+            padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
             child: Column(
               children: [
+                // Header Row
                 const Expanded(
-                    flex: 1,
-                    child: SizedBox(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(
-                              width: 80,
-                              child: Icon(
-                                Icons.arrow_back,
-                                size: 30,
-                                color: Colors.red,
-                              )),
-                          SizedBox(
-                              width: 140,
-                              child: Text(
-                                "Select Topic",
-                                style: TextStyle(
-                                    fontSize: 24, fontWeight: FontWeight.bold),
-                              )),
-                          SizedBox(width: 80)
-                        ],
+                  flex: 1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(
+                        Icons.arrow_back,
+                        size: 30,
+                        color: Colors.red,
                       ),
-                    )),
+                      Text(
+                        "Select Topic",
+                        style: TextStyle(
+                          fontSize: 26,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Arial",
+                          color: Color.fromARGB(255, 60, 60, 60),
+                        ),
+                      ),
+                      SizedBox(width: 30),
+                    ],
+                  ),
+                ),
+
+                // Recommended Topics Section
                 Expanded(
-                    flex: 2,
-                    child: SizedBox(
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 40,
-                            child: Text(
-                              "Recommended Topics For You",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w500),
+                  flex: 2,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Recommended Topics For You",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: Color.fromARGB(255, 80, 80, 150),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: List.generate(
+                              5,
+                              (index) => InkWell(
+                                onTap: (){},
+                                borderRadius: BorderRadius.circular(15),
+                                child: Container(
+                                  margin:
+                                      const EdgeInsets.symmetric(horizontal: 8),
+                                  width: 150,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    gradient: const LinearGradient(
+                                      colors: [Colors.pink, Colors.purple],
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                    ),
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        color: Colors.black26,
+                                        blurRadius: 4,
+                                        offset: Offset(2, 4),
+                                      ),
+                                    ],
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Expanded(
+                                        flex: 2,
+                                        child: Container(
+                                          decoration: const BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(15),
+                                              topRight: Radius.circular(15),
+                                            ),
+                                            color: Colors.red,
+                                          ),
+                                          child: Image.asset(
+                                              "assets/Images/addSign.png"),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Container(
+                                          width: double.infinity,
+                                          decoration: const BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.only(
+                                              bottomLeft: Radius.circular(15),
+                                              bottomRight: Radius.circular(15),
+                                            ),
+                                          ),
+                                          child: const Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "Topic",
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.bold),
+                                              ),
+                                              Text("Categoty:",style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.bold),)
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
-                          Expanded(
-                              child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: List.generate(
-                                  5,
-                                  (index) => Container(
-                                        margin: const EdgeInsets.fromLTRB(
-                                            0, 2, 15, 2),
-                                        width: 150,
-                                        height: double.infinity,
-                                        child: Column(
-                                          children: [
-                                            Expanded(
-                                              flex: 2,
-                                              child: Container(
-                                                width: double.infinity,
-                                                color: Colors.red,
-                                              ),
-                                            ),
-                                            Expanded(
-                                              flex: 1,
-                                              child: Container(
-                                                width: double.infinity,
-                                                color: Colors.blue,
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      )),
-                            ),
-                          ))
-                        ],
+                        ),
                       ),
-                    )),
+                    ],
+                  ),
+                ),
+
+                // Topics List Section
                 Expanded(
                   flex: 5,
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 25),
-                    child: SizedBox(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: List.generate(
-                            4,
-                            (index) => InkWell(
-                              borderRadius: BorderRadius.circular(20),
-                              onTap: ()=>devtools.log(names[index]),
-                              child: Container(
-                                width: double.infinity,
-                                height: 150,
-                                margin: const EdgeInsets.only(bottom: 10),
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    width: 1.5,
-                                    color: const Color.fromARGB(255, 236, 0, 217)
-                                  ),
-                                  borderRadius: BorderRadius.circular(20)
+                    padding: const EdgeInsets.only(top: 15),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: List.generate(
+                          4,
+                          (index) => InkWell(
+                            borderRadius: BorderRadius.circular(20),
+                            onTap: () => devtools.log(names[index]),
+                            child: Container(
+                              width: double.infinity,
+                              height: 150,
+                              margin: const EdgeInsets.only(bottom: 15),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  width: 1.5,
+                                  color: Colors.purpleAccent,
                                 ),
-                                child: Column(
-                                  children: [
-                                    Expanded(
-                                      flex: 3,
-                                      child: ClipRRect(
-                                       borderRadius: const BorderRadius.only(
-                                        topLeft:  Radius.circular(20),
-                                        topRight:  Radius.circular(20)
-                                       ),
-                                        child: SizedBox(
-                                          width: double.infinity,
-                                          child: Image.asset(
-                                            "assets/Images/${images[index]}",
-                                            fit: BoxFit.fill,
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: const [
+                                  BoxShadow(
+                                    color: Colors.black12,
+                                    blurRadius: 6,
+                                    offset: Offset(3, 3),
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    flex: 3,
+                                    child: ClipRRect(
+                                      borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(20),
+                                        topRight: Radius.circular(20),
+                                      ),
+                                      child: Image.asset(
+                                        "assets/Images/${images[index]}",
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: Container(
+                                      width: double.infinity,
+                                      decoration: const BoxDecoration(
+                                        color: Colors.pinkAccent,
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(20),
+                                          bottomRight: Radius.circular(20),
+                                        ),
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          names[index],
+                                          style: const TextStyle(
+                                            fontFamily: "Roboto",
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
                                           ),
                                         ),
                                       ),
                                     ),
-                                    Expanded(
-                                      flex: 1,
-                                      child: Container(
-                                        width: double.infinity,
-                                        decoration: const BoxDecoration(
-                                          color: Color.fromARGB(255, 178, 202, 255),
-                                          borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(20),
-                                            bottomRight: Radius.circular(20)
-                                          )
-                                        ),
-                                        child: Center(
-                                            child: Text(
-                                          names[index],
-                                          style: const TextStyle(
-                                              fontFamily: "cursive",
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold),
-                                        )),
-                                      ),
-                                    )
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
@@ -179,7 +243,7 @@ class _MathsscreenState extends State<Mathsscreen> {
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
