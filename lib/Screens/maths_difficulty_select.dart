@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import "dart:developer" as devtools;
 
 class MathsDifficultySelect extends StatefulWidget {
   const MathsDifficultySelect({super.key});
@@ -11,14 +12,16 @@ class _MathsDifficultySelectState extends State<MathsDifficultySelect> {
   @override
   Widget build(BuildContext context) {
     List<String> stars = ["OneStar.png", "TwoStars.png", "ThreeStars.png"];
-    List<String> difficulty=["Easy","Medium","Difficult"];
+    List<String> difficulty = ["Easy", "Medium", "Difficult"];
     return SafeArea(
         child: Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-            gradient: LinearGradient(
-          colors: [Color.fromARGB(255, 245, 255, 154),Color.fromARGB(255, 240, 223, 77), Colors.green],
-        begin: Alignment.centerLeft,end: Alignment.bottomRight)),
+            gradient: LinearGradient(colors: [
+          Color.fromARGB(255, 249, 255, 193),
+          Color.fromARGB(255, 255, 247, 171),
+          Color.fromARGB(255, 157, 238, 160)
+        ], begin: Alignment.centerLeft, end: Alignment.bottomRight)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -58,37 +61,48 @@ class _MathsDifficultySelectState extends State<MathsDifficultySelect> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: List.generate(
                               3,
-                              (index) => Container(
-                                margin: const EdgeInsets.symmetric(vertical: 5),
-                                height: 100,
-                                width: 300,
-                                decoration: BoxDecoration(
-                                    color: Colors.yellow,
-                                    borderRadius: BorderRadius.circular(10),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.grey.withOpacity(0.3),
-                                          spreadRadius: 3,
-                                          blurRadius: 5,
-                                          offset: const Offset(-2, 2))
-                                    ]),
-                                child: Column(children: [
-                                  Container(
-                                    margin:
-                                        const EdgeInsets.fromLTRB(5, 6, 5, 0),
-                                    height: 70,
-                                    width: double.infinity,
-                                    child: Image.asset(
-                                      "assets/Images/${stars[index]}",
+                              (index) => InkWell(
+                                onTap: (){devtools.log("You have pressed ${difficulty[index]}");},
+                                child: Container(
+                                  margin: const EdgeInsets.symmetric(vertical: 5),
+                                  height: 100,
+                                  width: 300,
+                                  decoration: BoxDecoration(
+                                      gradient: const RadialGradient(
+                                        colors: [
+                                          Color.fromARGB(255, 243, 227, 86),
+                                          Color.fromARGB(255, 219, 252, 220),
+                                        ],
+                                        center: Alignment(
+                                            0.0, 0.0), // Center of the gradient
+                                        radius: 12,
+                                      ),
+                                      borderRadius: BorderRadius.circular(10),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.grey.withOpacity(0.3),
+                                            spreadRadius: 5,
+                                            blurRadius: 8,
+                                            offset: const Offset(2, 2))
+                                      ]),
+                                  child: Column(children: [
+                                    Container(
+                                      margin:
+                                          const EdgeInsets.fromLTRB(5, 6, 5, 0),
+                                      height: 70,
+                                      width: double.infinity,
+                                      child: Image.asset(
+                                        "assets/Images/${stars[index]}",
+                                      ),
                                     ),
-                                  ),
-                                   Text(
-                                   difficulty[index],
-                                    style: const TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ]),
+                                    Text(
+                                      difficulty[index],
+                                      style: const TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ]),
+                                ),
                               ),
                             ),
                           ),
