@@ -2,7 +2,7 @@
 //import 'package:brain_kid/Screens/maths_difficulty_select.dart';
 //import 'package:brain_kid/Screens/mathsscreen.dart';
 import 'package:brain_kid/Screens/alphabetscreen.dart';
-import 'package:brain_kid/navigation.dart';
+//import 'package:brain_kid/navigation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
