@@ -1,3 +1,6 @@
+import 'package:brain_kid/Constants/constant.dart';
+//import 'package:brain_kid/Screens/mathsscreen.dart';
+import 'package:brain_kid/Screens/topicSelect.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as devtools;
 
@@ -72,12 +75,18 @@ class _HomescreenState extends State<Homescreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             InkWell(
-                              onTap: () => devtools.log("Numbers"),
+                              onTap: () =>
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => const Topicselect(
+                                            images: imagesNum,
+                                            names: namesNum,
+                                          ))),
                               child: Container(
                                 height: 160,
                                 width: 145,
                                 decoration: BoxDecoration(
-                                    color: const Color.fromARGB(255, 154, 201, 255),
+                                    color: const Color.fromARGB(
+                                        255, 154, 201, 255),
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Column(
                                   children: [
@@ -107,12 +116,16 @@ class _HomescreenState extends State<Homescreen> {
                               ),
                             ),
                             InkWell(
-                              onTap: () => devtools.log("Alphabet"),
+                              onTap: () => Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (context) => const Topicselect(
+                                          images: imagesAlp, names: namesAlp))),
                               child: Container(
                                 height: 160,
                                 width: 145,
                                 decoration: BoxDecoration(
-                                    color: const Color.fromARGB(255, 255, 209, 172),
+                                    color: const Color.fromARGB(
+                                        255, 255, 209, 172),
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Column(
                                   children: [
@@ -152,7 +165,8 @@ class _HomescreenState extends State<Homescreen> {
                                 height: 160,
                                 width: 145,
                                 decoration: BoxDecoration(
-                                    color: const Color.fromARGB(255, 255, 227, 204),
+                                    color: const Color.fromARGB(
+                                        255, 255, 227, 204),
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Column(
                                   children: [
@@ -187,7 +201,8 @@ class _HomescreenState extends State<Homescreen> {
                                 height: 160,
                                 width: 145,
                                 decoration: BoxDecoration(
-                                    color: const Color.fromARGB(255, 197, 215, 253),
+                                    color: const Color.fromARGB(
+                                        255, 197, 215, 253),
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Column(
                                   children: [

@@ -1,28 +1,20 @@
 import 'package:flutter/material.dart';
 import "dart:developer" as devtools;
 
-class Mathsscreen extends StatefulWidget {
-  const Mathsscreen({super.key});
+class Topicselect extends StatefulWidget {
+  final List<String> images;
+  final List<String> names;
 
+  const Topicselect({super.key, required this.images, required this.names});
   @override
-  State<Mathsscreen> createState() => _MathsscreenState();
+  State<Topicselect> createState() => _TopicselectState();
 }
 
-class _MathsscreenState extends State<Mathsscreen> {
+class _TopicselectState extends State<Topicselect> {
   @override
   Widget build(BuildContext context) {
-    const List<String> images = [
-      "add_Image.png",
-      "subtract_Image.png",
-      "multiply_Image.png",
-      "divide_Image.png"
-    ];
-    const List<String> names = [
-      "ADDITION",
-      "SUBTRACTION",
-      "MULTIPLICATION",
-      "DIVISION"
-    ];
+    final images = widget.images;
+    final names = widget.names;
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -43,17 +35,20 @@ class _MathsscreenState extends State<Mathsscreen> {
             child: Column(
               children: [
                 // Header Row
-                const Expanded(
+                 Expanded(
                   flex: 1,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(
-                        Icons.arrow_back,
-                        size: 30,
-                        color: Colors.red,
+                      InkWell(
+                        onTap: ()=>Navigator.of(context).pop(),
+                        child: const Icon(
+                          Icons.arrow_back,
+                          size: 30,
+                          color: Colors.red,
+                        ),
                       ),
-                      Text(
+                      const Text(
                         "Select Topic",
                         style: TextStyle(
                           fontSize: 26,
@@ -62,7 +57,7 @@ class _MathsscreenState extends State<Mathsscreen> {
                           color: Color.fromARGB(255, 60, 60, 60),
                         ),
                       ),
-                      SizedBox(width: 30),
+                      const SizedBox(width: 30),
                     ],
                   ),
                 ),
@@ -89,7 +84,7 @@ class _MathsscreenState extends State<Mathsscreen> {
                             children: List.generate(
                               5,
                               (index) => InkWell(
-                                onTap: (){},
+                                onTap: () {},
                                 borderRadius: BorderRadius.circular(15),
                                 child: Container(
                                   margin:
@@ -145,11 +140,16 @@ class _MathsscreenState extends State<Mathsscreen> {
                                                 "Topic",
                                                 style: TextStyle(
                                                     fontSize: 14,
-                                                    fontWeight: FontWeight.bold),
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
-                                              Text("Categoty:",style: TextStyle(
+                                              Text(
+                                                "Categoty:",
+                                                style: TextStyle(
                                                     fontSize: 14,
-                                                    fontWeight: FontWeight.bold),)
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )
                                             ],
                                           ),
                                         ),
@@ -174,7 +174,7 @@ class _MathsscreenState extends State<Mathsscreen> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: List.generate(
-                          4,
+                          images.length,
                           (index) => InkWell(
                             borderRadius: BorderRadius.circular(20),
                             onTap: () => devtools.log(names[index]),
