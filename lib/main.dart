@@ -3,7 +3,8 @@
 //import 'package:brain_kid/Screens/mathsscreen.dart';
 //import 'package:brain_kid/Screens/alphabetscreen.dart';
 //import 'package:brain_kid/Screens/mathsscreen.dart';
-import 'package:brain_kid/navigation.dart';
+import 'package:brain_kid/MathsQuestions/question1E.dart';
+//import 'package:brain_kid/navigation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,16 +18,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const NavigateScreens()
-    );
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const Question1e());
   }
 }
-
-

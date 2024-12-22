@@ -87,7 +87,15 @@ class _HomescreenState extends State<Homescreen> {
                                 decoration: BoxDecoration(
                                     color: const Color.fromARGB(
                                         255, 154, 201, 255),
-                                    borderRadius: BorderRadius.circular(20)),
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: const Color.fromARGB(
+                                                  255, 154, 201, 255)
+                                              .withOpacity(0.3),
+                                          spreadRadius: 2,
+                                          offset: const Offset(2, 2))
+                                    ]),
                                 child: Column(
                                   children: [
                                     Expanded(
@@ -126,7 +134,15 @@ class _HomescreenState extends State<Homescreen> {
                                 decoration: BoxDecoration(
                                     color: const Color.fromARGB(
                                         255, 255, 209, 172),
-                                    borderRadius: BorderRadius.circular(20)),
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: const Color.fromARGB(
+                                                  255, 255, 209, 172)
+                                              .withOpacity(0.3),
+                                          spreadRadius: 2,
+                                          offset: const Offset(2, 2))
+                                    ]),
                                 child: Column(
                                   children: [
                                     Expanded(
@@ -167,7 +183,15 @@ class _HomescreenState extends State<Homescreen> {
                                 decoration: BoxDecoration(
                                     color: const Color.fromARGB(
                                         255, 255, 227, 204),
-                                    borderRadius: BorderRadius.circular(20)),
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color:
+                                              const Color.fromARGB(255, 255, 227, 204)
+                                                  .withOpacity(0.3),
+                                          spreadRadius: 2,
+                                          offset: const Offset(2, 2))
+                                    ]),
                                 child: Column(
                                   children: [
                                     Expanded(
@@ -203,7 +227,15 @@ class _HomescreenState extends State<Homescreen> {
                                 decoration: BoxDecoration(
                                     color: const Color.fromARGB(
                                         255, 197, 215, 253),
-                                    borderRadius: BorderRadius.circular(20)),
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color:
+                                              const Color.fromARGB(255, 197, 215, 253)
+                                                  .withOpacity(0.3),
+                                          spreadRadius: 2,
+                                          offset: const Offset(2, 2))
+                                    ]),
                                 child: Column(
                                   children: [
                                     Expanded(
