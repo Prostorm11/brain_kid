@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-//import 'package:rive/rive.dart';
+import 'package:rive/rive.dart' as myRive;
 //import "dart:developer" as devtools;
 import "dart:math";
+import "dart:ui";
 
 class Question1e extends StatefulWidget {
   const Question1e({super.key});
@@ -53,8 +54,7 @@ class _Question1eState extends State<Question1e> {
     value2 = random.nextInt(10);
     answer = value1 + value2;
     generateOptions();
-   optionList = options.toList()..shuffle();
-
+    optionList = options.toList()..shuffle();
   }
 
   void generateOptions() {
@@ -63,11 +63,9 @@ class _Question1eState extends State<Question1e> {
       options.add(random.nextInt(20));
     }
   }
-  
 
   @override
   Widget build(BuildContext context) {
-    
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -83,14 +81,51 @@ class _Question1eState extends State<Question1e> {
                   Expanded(
                     flex: 1,
                     child: Container(
-                        margin: const EdgeInsets.only(bottom: 10),
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 1,
-                              color: const Color.fromARGB(255, 85, 108, 185),
-                            ),
-                            color: Colors.transparent)),
+                      margin: const EdgeInsets.only(bottom: 10),
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 1,
+                            color: const Color.fromARGB(255, 85, 108, 185),
+                          ),
+                          color: Colors.transparent),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          SizedBox(
+                            width: 110,
+                            height: 150,
+                            child: Center(
+                                child: Text(
+                              "$value1",
+                              style: const TextStyle(
+                                  fontSize: 100,
+                                  fontFamily: "cursive",
+                                  fontWeight: FontWeight.bold),
+                            )),
+                          ),
+                          const SizedBox(
+                            width: 110,
+                            height: 150,
+                            child: myRive.RiveAnimation.asset(
+                                "assets/Animations/the_plus.riv",
+                                fit: BoxFit.cover,),
+                          ),
+                          SizedBox(
+                            width: 110,
+                            height: 150,
+                            child: Center(
+                                child: Text(
+                              "$value2",
+                              style: const TextStyle(
+                                  fontSize: 100,
+                                  fontFamily: "cursive",
+                                  fontWeight: FontWeight.bold),
+                            )),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                   Expanded(
                       flex: 1,
@@ -168,9 +203,12 @@ class _Question1eState extends State<Question1e> {
                                 child: Center(
                                   child: ElevatedButton(
                                       onPressed: () => Navigator.of(context)
-                                          .pushAndRemoveUntil(MaterialPageRoute(
-                                              builder: (contex) =>
-                                                  const Question1e()),(route) => false,),
+                                              .pushAndRemoveUntil(
+                                            MaterialPageRoute(
+                                                builder: (contex) =>
+                                                    const Question1e()),
+                                            (route) => false,
+                                          ),
                                       style: ElevatedButton.styleFrom(
                                           backgroundColor: const Color.fromARGB(
                                               255, 85, 108, 185),
