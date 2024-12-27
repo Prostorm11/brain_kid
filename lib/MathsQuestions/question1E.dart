@@ -13,6 +13,7 @@ class Question1e extends StatefulWidget {
 
 class _Question1eState extends State<Question1e> {
   Random random = Random();
+  bool lock=false;
   Set<int> options = {};
   List<int> optionList = [];
 
@@ -26,13 +27,20 @@ class _Question1eState extends State<Question1e> {
     Colors.white
   ];
 
-  void changeColor(int index) {
+  void changeColor(int userAnswer, int index) {
     setState(() {
-      buttonColors[index] = Colors.red;
+      if (userAnswer == answer) {
+        buttonColors[index] = Colors.green;
+      } else {
+        buttonColors[index] = Colors.red;
+        for(int i=0;i<optionList.length)
+        
+      }
+      lock=true;
     });
   }
 
-  void releaseColor() {
+  /* void releaseColor() {
     setState(() {
       buttonColors = [
         const Color.fromARGB(255, 32, 231, 198),
@@ -41,7 +49,7 @@ class _Question1eState extends State<Question1e> {
         Colors.white
       ];
     });
-  }
+  } */
 
   @override
   void initState() {
@@ -108,8 +116,9 @@ class _Question1eState extends State<Question1e> {
                             width: 110,
                             height: 150,
                             child: myRive.RiveAnimation.asset(
-                                "assets/Animations/the_plus.riv",
-                                fit: BoxFit.cover,),
+                              "assets/Animations/the_plus.riv",
+                              fit: BoxFit.cover,
+                            ),
                           ),
                           SizedBox(
                             width: 110,
@@ -154,11 +163,11 @@ class _Question1eState extends State<Question1e> {
                                                       2 * rowindex + colindex;
                                                   return InkWell(
                                                     onTap: () {
-                                                      changeColor(position);
+                                                      changeColor(
+                                                          optionList[position],
+                                                          position);
                                                     },
-                                                    onTapCancel: () {
-                                                      releaseColor();
-                                                    },
+                                                   
                                                     child: Container(
                                                       width: 120,
                                                       height: 120,
