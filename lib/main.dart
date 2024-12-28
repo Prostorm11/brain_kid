@@ -24,6 +24,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const Question1e());
+        home: const Question1e(questionCount: 1,));
   }
 }

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart' as myRive;
-//import "dart:developer" as devtools;
+import "dart:developer" as devtools;
 import "dart:math";
 import "dart:ui";
 
 class Question1e extends StatefulWidget {
-  const Question1e({super.key});
+  final int questionCount;
+  const Question1e({super.key, required this.questionCount});
 
   @override
   State<Question1e> createState() => _Question1eState();
@@ -13,7 +14,7 @@ class Question1e extends StatefulWidget {
 
 class _Question1eState extends State<Question1e> {
   Random random = Random();
-  bool lock=false;
+  bool lock = false;
   Set<int> options = {};
   List<int> optionList = [];
 
@@ -33,10 +34,14 @@ class _Question1eState extends State<Question1e> {
         buttonColors[index] = Colors.green;
       } else {
         buttonColors[index] = Colors.red;
-        for(int i=0;i<optionList.length)
-        
+        for (int i = 0; i < optionList.length; i++) {
+          if (answer == optionList[i]) {
+            buttonColors[i] = Colors.green;
+            break;
+          }
+        }
       }
-      lock=true;
+      lock = true;
     });
   }
 
@@ -74,6 +79,7 @@ class _Question1eState extends State<Question1e> {
 
   @override
   Widget build(BuildContext context) {
+    final int counter = widget.questionCount + 1;
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -163,11 +169,13 @@ class _Question1eState extends State<Question1e> {
                                                       2 * rowindex + colindex;
                                                   return InkWell(
                                                     onTap: () {
-                                                      changeColor(
-                                                          optionList[position],
-                                                          position);
+                                                      lock
+                                                          ? null
+                                                          : changeColor(
+                                                              optionList[
+                                                                  position],
+                                                              position);
                                                     },
-                                                   
                                                     child: Container(
                                                       width: 120,
                                                       height: 120,
@@ -211,13 +219,21 @@ class _Question1eState extends State<Question1e> {
                                 flex: 1,
                                 child: Center(
                                   child: ElevatedButton(
-                                      onPressed: () => Navigator.of(context)
-                                              .pushAndRemoveUntil(
-                                            MaterialPageRoute(
-                                                builder: (contex) =>
-                                                    const Question1e()),
-                                            (route) => false,
-                                          ),
+                                      onPressed: (widget.questionCount < 10)
+                                          ? () {
+                                              devtools.log("$counter");
+                                              Navigator.of(context)
+                                                  .pushAndRemoveUntil(
+                                                MaterialPageRoute(
+                                                    builder: (contex) =>
+                                                        Question1e(
+                                                          questionCount:
+                                                              counter,
+                                                        )),
+                                                (route) => false,
+                                              );
+                                            }
+                                          : null,
                                       style: ElevatedButton.styleFrom(
                                           backgroundColor: const Color.fromARGB(
                                               255, 85, 108, 185),
@@ -229,7 +245,9 @@ class _Question1eState extends State<Question1e> {
                                           minimumSize: const Size(200, 20),
                                           tapTargetSize:
                                               MaterialTapTargetSize.shrinkWrap),
-                                      child: const Text("Next")),
+                                      child: (widget.questionCount < 10)
+                                          ? const Text("Next")
+                                          : const Text("Finish")),
                                 )),
                           ],
                         ),
