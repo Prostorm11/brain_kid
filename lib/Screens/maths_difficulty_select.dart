@@ -1,3 +1,4 @@
+import 'package:brain_kid/MathsQuestions/question1E.dart';
 import 'package:flutter/material.dart';
 import "dart:developer" as devtools;
 
@@ -16,6 +17,7 @@ class _MathsDifficultySelectState extends State<MathsDifficultySelect> {
     return SafeArea(
         child: Scaffold(
       body: Container(
+        width: double.infinity,
         decoration: const BoxDecoration(
             gradient: LinearGradient(colors: [
           Color.fromARGB(255, 249, 255, 193),
@@ -27,29 +29,65 @@ class _MathsDifficultySelectState extends State<MathsDifficultySelect> {
           children: [
             Expanded(
               flex: 2,
-              child: SizedBox(
-                child: Image.asset(
-                  "assets/Images/DifficultyImage1.png",
-                  fit: BoxFit.fill,
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                   Expanded(
+                    flex: 1,
+                    child: InkWell(
+                      onTap: () => Navigator.of(context).pop(),
+                      child: const SizedBox(
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.arrow_back,
+                              color: Colors.red,
+                            ),
+                            Text(
+                              //Icon(Icons.arrow_back),
+                              "Go Back",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 9,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Image.asset(
+                        "assets/Images/DifficultyImage1.png",
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             Expanded(
               flex: 3,
               child: SizedBox(
+                width: double.infinity,
                 child: Padding(
                   padding: const EdgeInsets.all(15),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       const SizedBox(
+                        width: double.infinity,
                         height: 30,
                         child: Text(
                           "Select Difficulty",
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
+                              color: Colors.red,
                               fontFamily: "sans-serif"),
                         ),
                       ),
@@ -62,9 +100,14 @@ class _MathsDifficultySelectState extends State<MathsDifficultySelect> {
                             children: List.generate(
                               3,
                               (index) => InkWell(
-                                onTap: (){devtools.log("You have pressed ${difficulty[index]}");},
+                                onTap: () {
+                                  devtools.log(
+                                      "You have pressed ${difficulty[index]}");
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Question1e(questionCount: 1, difficulty: difficulty[index])));
+                                },
                                 child: Container(
-                                  margin: const EdgeInsets.symmetric(vertical: 5),
+                                  margin:
+                                      const EdgeInsets.symmetric(vertical: 5),
                                   height: 100,
                                   width: 300,
                                   decoration: BoxDecoration(
@@ -99,7 +142,8 @@ class _MathsDifficultySelectState extends State<MathsDifficultySelect> {
                                       difficulty[index],
                                       style: const TextStyle(
                                           fontSize: 14,
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.red),
                                     )
                                   ]),
                                 ),

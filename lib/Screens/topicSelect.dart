@@ -1,3 +1,4 @@
+import 'package:brain_kid/Screens/maths_difficulty_select.dart';
 import 'package:flutter/material.dart';
 import "dart:developer" as devtools;
 
@@ -177,7 +178,10 @@ class _TopicselectState extends State<Topicselect> {
                           images.length,
                           (index) => InkWell(
                             borderRadius: BorderRadius.circular(20),
-                            onTap: () => devtools.log(names[index]),
+                            onTap: () {
+                              devtools.log(names[index]);
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const MathsDifficultySelect()));
+                            } ,
                             child: Container(
                               width: double.infinity,
                               height: 150,

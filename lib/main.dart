@@ -3,8 +3,9 @@
 //import 'package:brain_kid/Screens/mathsscreen.dart';
 //import 'package:brain_kid/Screens/alphabetscreen.dart';
 //import 'package:brain_kid/Screens/mathsscreen.dart';
-import 'package:brain_kid/MathsQuestions/question1E.dart';
+//import 'package:brain_kid/MathsQuestions/question1E.dart';
 //import 'package:brain_kid/navigation.dart';
+import 'package:brain_kid/navigation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,6 +25,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const Question1e(questionCount: 1,));
+        home: const NavigateScreens());
   }
 }

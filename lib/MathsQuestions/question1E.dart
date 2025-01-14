@@ -1,3 +1,4 @@
+import "package:brain_kid/Screens/maths_difficulty_select.dart";
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart' as myRive;
 import "dart:developer" as devtools;
@@ -6,7 +7,9 @@ import "dart:ui";
 
 class Question1e extends StatefulWidget {
   final int questionCount;
-  const Question1e({super.key, required this.questionCount});
+  final String difficulty;
+  const Question1e(
+      {super.key, required this.questionCount, required this.difficulty});
 
   @override
   State<Question1e> createState() => _Question1eState();
@@ -63,8 +66,16 @@ class _Question1eState extends State<Question1e> {
   }
 
   void generatequestion() {
-    value1 = random.nextInt(10);
-    value2 = random.nextInt(10);
+    if (widget.difficulty == "Easy") {
+      value1 = random.nextInt(10);
+      value2 = random.nextInt(10);
+    } else if (widget.difficulty == "Medium") {
+      value1 = random.nextInt(10) + 10;
+      value2 = random.nextInt(10) + 10;
+    } else {
+      value1 = random.nextInt(20) + 20;
+      value2 = random.nextInt(20) + 20;
+    }
     answer = value1 + value2;
     generateOptions();
     optionList = options.toList()..shuffle();
@@ -229,11 +240,21 @@ class _Question1eState extends State<Question1e> {
                                                         Question1e(
                                                           questionCount:
                                                               counter,
+                                                          difficulty:
+                                                              widget.difficulty,
                                                         )),
                                                 (route) => false,
                                               );
                                             }
-                                          : null,
+                                          : () {
+                                              Navigator.of(context)
+                                                  .pushAndRemoveUntil(
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              const MathsDifficultySelect()),
+                                                      (Route<dynamic> route) =>
+                                                          route.settings.name!="Question1e");
+                                            },
                                       style: ElevatedButton.styleFrom(
                                           backgroundColor: const Color.fromARGB(
                                               255, 85, 108, 185),
