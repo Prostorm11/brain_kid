@@ -32,7 +32,7 @@ class _MathsDifficultySelectState extends State<MathsDifficultySelect> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                   Expanded(
+                  Expanded(
                     flex: 1,
                     child: InkWell(
                       onTap: () => Navigator.of(context).pop(),
@@ -103,7 +103,10 @@ class _MathsDifficultySelectState extends State<MathsDifficultySelect> {
                                 onTap: () {
                                   devtools.log(
                                       "You have pressed ${difficulty[index]}");
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Question1e(questionCount: 1, difficulty: difficulty[index])));
+                                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                      builder: (context) => Question1e(
+                                          questionCount: 1,
+                                          difficulty: difficulty[index])));
                                 },
                                 child: Container(
                                   margin:

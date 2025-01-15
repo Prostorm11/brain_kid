@@ -232,7 +232,7 @@ class _Question1eState extends State<Question1e> {
                                   child: ElevatedButton(
                                       onPressed: (widget.questionCount < 10)
                                           ? () {
-                                              devtools.log("$counter");
+                                              /*  devtools.log("$counter");
                                               Navigator.of(context)
                                                   .pushAndRemoveUntil(
                                                 MaterialPageRoute(
@@ -243,17 +243,31 @@ class _Question1eState extends State<Question1e> {
                                                           difficulty:
                                                               widget.difficulty,
                                                         )),
-                                                (route) => false,
-                                              );
+                                                (route) =>
+                                                    route.settings.name !=
+                                                    "Question1e",
+                                              ); */
+                                              Navigator.of(context).pushReplacement(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          Question1e(
+                                                              questionCount:
+                                                                  counter,
+                                                              difficulty: widget
+                                                                  .difficulty)));
                                             }
                                           : () {
-                                              Navigator.of(context)
+                                              /*  Navigator.of(context)
                                                   .pushAndRemoveUntil(
                                                       MaterialPageRoute(
                                                           builder: (context) =>
                                                               const MathsDifficultySelect()),
                                                       (Route<dynamic> route) =>
-                                                          route.settings.name!="Question1e");
+                                                          route.settings.name!="Question1e"); */
+                                              Navigator.of(context).pushReplacement(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          const MathsDifficultySelect()));
                                             },
                                       style: ElevatedButton.styleFrom(
                                           backgroundColor: const Color.fromARGB(
